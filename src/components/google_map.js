@@ -2,12 +2,15 @@ import React, { Component } from 'react';
 
 class GoogleMap extends Component {
   componentDidMount() {
-    new google.maps.Map(this.refs.map, {
+    let position = {lat: this.props.lat, lng: this.props.lon};
+    const map = new google.maps.Map(this.refs.map, {
       zoom:12,
-      center: {
-        lat: this.props.lat,
-        lng: this.props.lon
-      }
+      center: position
+    });
+
+    const marker = new google.maps.Marker({
+      position: position,
+      map: map
     });
   }
   
